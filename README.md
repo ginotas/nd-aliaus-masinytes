@@ -28,5 +28,6 @@ lenktynes baigiasi, kai bent viena masina nuvaziuoja 1000 km
 *) komentatorius - kas 100 km spausdinti lyderi
 pabaigoj suruosiuoti turnyrine lentele pagal nuvaziuota kelia (mazejimo tvarka)
 atspausdinti turnyrine lentele
+
 instanceof
 kaip iskviesti super metoda
