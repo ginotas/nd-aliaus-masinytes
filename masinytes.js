@@ -36,6 +36,10 @@ class SportineMasina extends Masina {
         } else {
             this.greitis += (kiek * 2);
         }
+        // uzdedam max greiti sportinem masinom:
+        if (this.greitis > 300) {
+            this.greitis = 300;
+        }
     }
     stabdis(kiek) {
         if(this.spoileris) {
@@ -46,7 +50,12 @@ class SportineMasina extends Masina {
 
     }
     pakeiskSpoilerioPozicija() {
-
+        let keiciam = Math.random();
+        if (keiciam < 0.5) {
+            this.spoileris = false;
+        } else {
+            this.spoileris = true;
+        }
     }
 }
 
