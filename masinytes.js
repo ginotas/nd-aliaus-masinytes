@@ -23,6 +23,14 @@ class Masina {
     vaziuojam() {
         this.kelias += this.greitis;
     }
+    lyderis(lyderis) {
+        if (this.kelias > lyderis.kelias) {
+            return true;
+        } else if (this.kelias === lyderis.kelias && this.greitis > lyderis.greitis) {
+            return true;
+        }
+        return false;
+    }
 }
 
 class SportineMasina extends Masina {
@@ -70,20 +78,47 @@ masinos.push(new Masina("audi"));
 masinos.push(new SportineMasina("maserati"));
 masinos.push(new SportineMasina("bugati"));
 
-let pirmauja;
+let lyderis;
+let atkarpa = 100;
 
 do {
     for (let i = 0; i < masinos.length; i++) {
         let didinamGreiti = Math.random();
-        if (didinamGreiti > 0.5) {
+        if (didinamGreiti > 0.3) {
             masinos[i].gazas(Math.floor(Math.random() * 10));
         } else {
             masinos[i].stabdis(Math.floor(Math.random() * 10));
         }
         masinos[i].vaziuojam();
     }
+    lyderis = 0;
+    for (let i = 1; i < masinos.length; i++) {
+        if (masinos[i].lyderis(masinos[lyderis])) {
+            lyderis = i;
+        }
+    }
+    if (masinos[lyderis].kelias > atkarpa) {
+        console.log("Po " + atkarpa + " km. pirmauja:");
+        console.log(masinos[lyderis]);
+        atkarpa += 100;
+    }
 
-} while ();
+} while (masinos[lyderis].kelias < 1000);
+
+for (let i = 0; i < masinos.length - 1; i++) {
+    for (let j = i + 1; j < masinos.length; j++) {
+        if (
+            !masinos[i].lyderis(masinos[j])
+        ) {
+            let tmp = masinos[i];
+            masinos[i] = masinos[j];
+            masinos[j] = tmp;
+        }
+    }
+}
+
+
+
 
 console.log(masinos);
 
